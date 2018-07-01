@@ -1,21 +1,20 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span>Fabric Extension Demo</span>
-    <span class="example-spacer"></span>
+    <span class="tab-spacer"></span>
     <div *ngIf="account">
-      <mat-icon class="example-icon">verified_user</mat-icon>
+      <mat-icon class="tab-icon">verified_user</mat-icon>
       <span>{{account.name}}</span>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
-<br/>
-<div fxLayout="column" fxLayoutAlign="start center">
-  <mat-card style="width: 600px">
+<div class="body" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="20px">
+  <mat-card>
     <mat-card-title>Allgemeine Informationen</mat-card-title>
     <mat-card-content>
-      <p>Extension: <span *ngIf="extensionState" style="color:green">vorhanden</span><span *ngIf="!extensionState" style="color:red">nicht vorhanden</span></p>
+      <p>Extension: <span *ngIf="extensionState" style="color:green">verbunden</span><span *ngIf="!extensionState" style="color:red">nicht verbunden</span></p>
       <p>Benutzer: <span *ngIf="loggedin" style="color:green">angemeldet</span><span *ngIf="!loggedin" style="color:red">nicht angemeldet</span></p>
-      <p>Account: <span *ngIf="account" style="color:green">vorhanden</span><span *ngIf="!account" style="color:red">nicht vorhanden</span></p>
+      <p>Account: <span *ngIf="account" style="color:green">verfügbar</span><span *ngIf="!account" style="color:red">nicht verfügbar</span></p>
       <div *ngIf="account" fxLayout="column" fxLayoutAlign="start stretch" fxFlex >
           <h3> {{account.name}}</h3>
           <span>Organization: {{account.organization}}</span>
@@ -23,11 +22,14 @@
       </div>
     </mat-card-content>
   </mat-card>
-  <div fxLayout="row" fxLayoutAlign="space-between center" style="height: 80px;" *ngIf="account">
+  <mat-card style="height: 80px;" *ngIf="account">
+    <mat-card-title>Chaincode</mat-card-title>
+    <mat-card-content fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
       <button mat-raised-button color="primary" (click)="getData('request.get')">Einsichtsanfragen</button>
       <button mat-raised-button color="primary" *ngIf="account.unit == 'Patient'" (click)="getData('treatment.get')">Krankenakte</button>
-  </div>
-  <mat-card style="width: 600px" *ngIf="requestData">
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngIf="requestData">
       <mat-card-title>Einsichtsanfragen</mat-card-title>
       <mat-card-content>
         <table mat-table [dataSource]="requestData" style="width: 100%;">
@@ -48,7 +50,7 @@
         </table>
       </mat-card-content>
   </mat-card>
-  <mat-card style="width: 600px" *ngIf="recordData">
+  <mat-card *ngIf="recordData">
       <mat-card-title>Krankenakte</mat-card-title>
       <mat-card-content>
           <table mat-table [dataSource]="recordData" style="width: 100%;">

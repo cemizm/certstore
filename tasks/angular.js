@@ -25,7 +25,7 @@ gulp.task('angular', (cb) =>{
   
   bg.on('close', (code) => {
     if(!params.watch) {
-      gulp.src('frontend/dist/frontend/**/*.{html,js,css}')
+      gulp.src('frontend/dist/frontend/**/*.{html,js,css,woff2}')
           .pipe(gulp.dest(`dist/${args.vendor}/pages`))
     }
     cb();
