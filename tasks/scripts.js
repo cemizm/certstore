@@ -10,7 +10,7 @@ import args from './lib/args'
 
 const ENV = args.production ? 'production' : 'development'
 
-gulp.task('scripts', (cb) => {
+gulp.task('scripts', ['grpc'], (cb) => {
   return gulp.src(['app/scripts/**/*.js', 'app/scripts/**/*.ts'])
     .pipe(plumber({
       // Webpack will log the errors

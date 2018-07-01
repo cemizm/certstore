@@ -7,10 +7,8 @@ gulp.task('build', gulpSequence(
     'grpc',
     'scripts',
     'angular',
-    'pages',
     'locales',
     'images',
-    'fonts',
     'chromereload'
   ]
 ))

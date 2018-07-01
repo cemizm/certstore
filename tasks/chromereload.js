@@ -2,6 +2,7 @@ import gulp from 'gulp'
 import gutil from 'gulp-util'
 import livereload from 'gulp-livereload'
 import args from './lib/args'
+import watch from 'gulp-watch';
 
 // In order to make chromereload work you'll need to include
 // the following line in your `scipts/background.ts` file.
@@ -32,6 +33,5 @@ gulp.task('chromereload', (cb) => {
   gulp.watch('app/manifest.json', ['manifest'])
   gulp.watch('app/_locales/**/*', ['locales'])
   gulp.watch('app/images/**/*', ['images'])
-  gulp.watch('app/fonts/**/*', ['fonts'])
-  gulp.watch('frontend/dist/frontend/**/*.{html,js,css}', ['pages'])
+  watch('frontend/dist/frontend/**/*.{html,js,css,woff2}', { ignoreInitial: false }).pipe(gulp.dest(`dist/${args.vendor}/pages`))
 })

@@ -58,6 +58,7 @@
     "gulp-sourcemaps": "^2.x.x",
     "gulp-tag-version": "1.x.x",
     "gulp-util": "3.x.x",
+    "gulp-watch": "^5.0.0",
     "gulp-zip": "^4.x.x",
     "jsrsasign": "^8.0.12",
     "net": "^1.0.2",
